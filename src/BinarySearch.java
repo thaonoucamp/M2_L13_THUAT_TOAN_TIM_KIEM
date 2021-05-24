@@ -1,6 +1,6 @@
 public class BinarySearch {
     // tim kiem gia tri trong mang theo thu tu tang dan;
-    static int[] list = {2, 4, 7, 10, 11, 45, 50, 59, 60, 66, 69, 70, 79};
+    static int[] list = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
     // cai dat phuong thuc;
     static int binarySearch(int[] list, int key) {
@@ -19,13 +19,27 @@ public class BinarySearch {
         return -1;
     }
 
+    public static int binaryRecursive(int[] list, int low, int high, int key) {
+        if (low >= high) {
+            int mid = low + (high - low) / 2;
+            if (list[mid] == key)
+                return mid;
+            if (list[mid] > key)
+                return binaryRecursive(list, low, high - 1, key);
+            return binaryRecursive(list, low, high + 1, key);
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
-        System.out.println(binarySearch(list,2));
-        System.out.println(binarySearch(list,11));
-        System.out.println(binarySearch(list,79));
-        System.out.println(binarySearch(list,1));
-        System.out.println(binarySearch(list,5));
-        System.out.println(binarySearch(list,80));
+        System.out.println(binaryRecursive(list, list.length - 1, 0, 5));
+//        System.out.println(binarySearch(list, 5));
+//        System.out.println(binarySearch(list, 11));
+//        System.out.println(binarySearch(list, 79));
+//        System.out.println(binarySearch(list, 1));
+//        System.out.println(binarySearch(list, 5));
+//        System.out.println(binarySearch(list, 80));
+
     }
 }
 // tim kiem phan tu cu the;
